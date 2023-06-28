@@ -6,21 +6,29 @@ import VideoPlayer from "@/components/VideoPlayer";
 const VideoForm = ({ formId }) => {
   const [videoType, setVideoType] = useState("num_inference_steps");
   const [videoValue, setVideoValue] = useState(10);
+  const [temporaryValue, setTemporaryValue] = useState(videoValue);
 
   const handleVideoTypeChange = (e) => {
     const newType = e.target.value;
     setVideoType(newType);
     if (newType === "guidance_scale") {
       setVideoValue(12.5);
+      setTemporaryValue(12.5);
     } else if (newType === "num_frames") {
       setVideoValue(24);
+      setTemporaryValue(24);
     } else {
       setVideoValue(50);
+      setTemporaryValue(50);
     }
   };
 
   const handleVideoValueChange = (e) => {
-    setVideoValue(e.target.value);
+    setTemporaryValue(e.target.value);
+  };
+
+  const handleVideoValueChangeEnd = () => {
+    setVideoValue(temporaryValue);
   };
 
   const step = videoType === "num_inference_steps" ? "5" : videoType === "guidance_scale" ? "0.5" : "1"
@@ -39,27 +47,41 @@ const VideoForm = ({ formId }) => {
 
   return (
     <div className="flex flex-col items-center">
-      <label htmlFor={`videoType_${formId}`}>Select video type:</label>
-      <select id={`videoType_${formId}`} value={videoType} onChange={handleVideoTypeChange}>
-        <option value="num_inference_steps">Number of Inference Steps</option>
-        <option value="guidance_scale">Guidance Scale</option>
-        <option value="num_frames">Number of Frames</option>
+      <label className="hidden" htmlFor={`videoType_${formId}`}>Pick something to change</label>
+      <select
+        id={`videoType_${formId}`}
+        value={videoType}
+        onChange={handleVideoTypeChange}
+        className="bg-gray-50 border border-gray-300 text-gray-900 pr-4 mb-6 text-sm rounded-lg block w-full p-2.5"
+      >
+        <option value="num_inference_steps">Steps</option>
+        <option value="guidance_scale">Guidance scale</option>
+        <option value="num_frames">Number of frames</option>
       </select>
 
-      <label htmlFor={`videoValue_${formId}`}>{videoType.replace('_', ' ')}:</label>
-      <div className="flex items-center">
-        <span>{min}</span>
-        <input
-          id={`videoValue_${formId}`}
-          type="range"
-          step={step}
-          min={min}
-          max={max}
-          value={videoValue}
-          onChange={handleVideoValueChange}
-        />
-        <span>{max}</span>
+      <label className="hidden" htmlFor={`videoValue_${formId}`}>{videoType.replace('_', ' ')}:</label>
+      <div className="w-full flex items-center">
+        <div className="w-full flex items-center mb-6 border-2 px-6 py-2 rounded-md">
+          <span className="mr-2 text-lg">{min}</span>
+          <input
+            id={`videoValue_${formId}`}
+            type="range"
+            step={step}
+            min={min}
+            max={max}
+            value={temporaryValue}
+            onChange={handleVideoValueChange}
+            onMouseUp={handleVideoValueChangeEnd}
+            onTouchEnd={handleVideoValueChangeEnd}
+            className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer range-lg dark:bg-gray-700"
+          />
+          <span className="ml-2 text-lg">{max}</span>
+        </div>
+        <span className="w-32 ml-4 mb-6 text-center rounded-md bg-blue-50 px-6 py-2 text-lg text-blue-600">
+          { temporaryValue }
+        </span>
       </div>
+
 
       <VideoPlayer video={videoPath} />
     </div>

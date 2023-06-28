@@ -5,8 +5,8 @@ import VideoForm from "@/components/VideoForm";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
-      <h1 className="text-4xl font-bold text-center mb-8">
+    <main className="container max-w-6xl mx-auto md:px-8 px-4 py-4 pb-10 bg-white border-black min-h-screen">
+      <h1 className="text-6xl font-bold text-center mt-6 mb-12">
         Zeroscope comparison
       </h1>
 

@@ -74,13 +74,28 @@ export default function Home() {
           <li>use a 1024x576 resolution</li>
         </ul>
 
-        <h3 className={ `${spaceGrotesk.className} font-bold text-2xl mt-8 mb-4`}>Upscaled video</h3>
-
         <p>
           <a href="https://replicate.com/p/dujigjlbxyagw5fxctrde6tthq">View an example prediction</a>
         </p>
 
-        <VideoPlayer video="/videos/clown_fish_upscale.mp4" autoPlay={false} />
+        <p>Try experimenting with the prompt too, you can get some <a href="https://replicate.com/p/yuxczvdbuias2mqdsvhbjqsdpi">weird results</a>.</p>
+
+        <div className="mt-8 mb-8">
+          <VideoPlayer video="/videos/clown_fish_upscale.mp4" autoPlay={false} />
+        </div>
+
+        <h3 className={ `${spaceGrotesk.className} font-bold text-2xl mt-8 mb-4`}>Interpolating video</h3>
+
+        <p>Smooth out your video with frame interpolation.</p>
+
+        <p>Try using:</p>
+
+        <ul className="list-disc ml-6 mb-8">
+          <li><a href="https://runwayml.com/ai-magic-tools/frame-interpolation/">RunwayML</a></li>
+          <li><a href="https://www.topazlabs.com/topaz-video-ai">Topaz Video AI</a></li>
+        </ul>
+
+        <VideoPlayer video="/videos/clown_fish_upscale_interpolated.mov" autoPlay={false} />
       </div>
     </main>
   );

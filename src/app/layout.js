@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <meta property="og:description" content={metadata.title} />
+        <meta property="og:description" content={metadata.description} />
         <meta property="og:image" content="https://zeroscope.replicate.dev/og.jpg" />
         <meta property="og:url" content="https://zeroscope.replicate.dev" />
         <meta property="og:type" content="website" />

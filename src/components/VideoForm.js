@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import VideoPlayer from "@/components/VideoPlayer";
 
 const VideoForm = ({ formId }) => {
-  const [videoType, setVideoType] = useState("num_inference_steps");
-  const [videoValue, setVideoValue] = useState(10);
+  const [videoType, setVideoType] = useState("num_frames");
+  const [videoValue, setVideoValue] = useState(24);
   const [temporaryValue, setTemporaryValue] = useState(videoValue);
 
   const handleVideoTypeChange = (e) => {
@@ -54,9 +54,9 @@ const VideoForm = ({ formId }) => {
         onChange={handleVideoTypeChange}
         className="bg-gray-50 border border-gray-300 text-gray-900 pr-4 mb-6 text-sm rounded-lg block w-full p-2.5"
       >
-        <option value="num_inference_steps">Steps</option>
-        <option value="guidance_scale">Guidance scale</option>
         <option value="num_frames">Number of frames</option>
+        <option value="guidance_scale">Guidance scale</option>
+        <option value="num_inference_steps">Steps</option>
       </select>
 
       <label className="hidden" htmlFor={`videoValue_${formId}`}>{videoType.replace('_', ' ')}:</label>
@@ -71,6 +71,7 @@ const VideoForm = ({ formId }) => {
             max={max}
             value={temporaryValue}
             onChange={handleVideoValueChange}
+            onKeyUp={handleVideoValueChangeEnd}
             onMouseUp={handleVideoValueChangeEnd}
             onTouchEnd={handleVideoValueChangeEnd}
             className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer range-lg dark:bg-gray-700"
@@ -82,8 +83,25 @@ const VideoForm = ({ formId }) => {
         </span>
       </div>
 
-
       <VideoPlayer video={videoPath} />
+      {/* <dl class="border p-4 rounded-md">
+        <dt class="font-bold">Prompt</dt>
+        <dd class="mb-2">Clown fish swimming in a coral reef, beautiful, 8k, perfect, award winning, national geographic</dd>
+        <dt class="font-bold">Negative prompt</dt>
+        <dd class="mb-2">very blue, dust, noisy, washed out, ugly, distorted, broken</dd>
+        <dt class="font-bold">Number of frames</dt>
+        <dd class="mb-2">24</dd>
+        <dt class="font-bold">Guidance scale</dt>
+        <dd class="mb-2">12.5</dd>
+        <dt class="font-bold">Steps</dt>
+        <dd class="mb-2">50</dd>
+        <dt class="font-bold">Frames per second</dt>
+        <dd class="mb-2">24</dd>
+        <dt class="font-bold">Model</dt>
+        <dd class="mb-2">576w</dd>
+        <dt class="font-bold">Dimensions</dt>
+        <dd class="mb-2">576x320</dd>
+      </dl> */}
     </div>
   );
 };

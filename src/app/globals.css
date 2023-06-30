@@ -25,3 +25,22 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+a {
+  text-decoration: underline;
+}
+
+a:focus {
+  text-decoration: none;
+  outline: 3px solid transparent;
+  background-color: #fd0;
+  box-shadow: 0 -2px #fd0, 0 4px #0b0c0c;
+}
+
+code {
+  @apply text-red-600;
+}
+
+.max-w-prose p {
+  @apply mb-4;
+}

@@ -49,7 +49,7 @@ export default function Home() {
         <h3 className={ `${spaceGrotesk.className} font-bold text-2xl mt-8 mb-4`}>Number of frames and FPS (frames-per-second)</h3>
         <p>Zeroscope v2 was trained on short 24 frame clips. Set your <code>num_frames</code> to 24 for the best results. You can try longer clips, but beyond 40 frames the video will completely degrade.</p>
 
-        <p>For a smooth 1s video set the <code>fps</code> to 24. Alternatively, use 12 or 8 for a more jerky 2s or 3s video, then use a video interpolater to fill in the missing frames and make the video smooth again.</p>
+        <p>For a smooth 1s video set the <code>fps</code> to 24. Alternatively, use 12 or 8 for a more jerky 2s or 3s video, then use a <Link href="#interpolate">video interpolater</Link> to fill in the missing frames and make the video smooth again.</p>
 
         <h3 className={ `${spaceGrotesk.className} font-bold text-2xl mt-8 mb-4`}>Guidance scale</h3>
 
@@ -84,7 +84,7 @@ export default function Home() {
           <VideoPlayer video="/videos/clown_fish_upscale.mp4" autoPlay={false} />
         </div>
 
-        <h3 className={ `${spaceGrotesk.className} font-bold text-2xl mt-8 mb-4`}>Interpolating video</h3>
+        <h3 className={ `${spaceGrotesk.className} font-bold text-2xl mt-8 mb-4`} id="interpolate">Interpolating video</h3>
 
         <p>Smooth out your video with frame interpolation.</p>
 

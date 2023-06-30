@@ -5,16 +5,13 @@ import { Analytics } from '@vercel/analytics/react'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Zeroscope comparison',
-  description: 'Compare how parameters effect a Zeroscope video',
+  title: 'Zeroscope v2 – A settings guide by Replicate',
+  description: 'Compare how settings affect a Zeroscope video',
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <title>Zeroscope v2 – A settings guide by Replicate</title>
-      </head>
       <body className={inter.className}>
         {children}
         <Analytics />

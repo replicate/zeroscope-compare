@@ -1,7 +1,6 @@
-'use client'
-
 import React from 'react';
 import VideoForm from "@/components/VideoForm";
+import { ArrowRightIcon } from '@heroicons/react/24/solid';
 import { Space_Grotesk } from 'next/font/google'
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] })
@@ -17,9 +16,11 @@ export default function Home() {
       <div className="max-w-prose text-xl">
         <p>Zeroscope v2 is an open-source text-to-video model, give it a prompt and it’ll generate a short video.</p>
 
-        <p>You can <a href="https://replicate.com/anotherjesse/zeroscope-v2-xl">generate videos with it using Replicate</a>.</p>
-
         <p>It’s a fine-tuned version of <a href="https://replicate.com/cjwbw/damo-text-to-video">Damo’s original text-to-video model</a>, tuned by <a href="https://twitter.com/cerspense">@cerspense</a>. And it can make short 1024x576 videos without watermarks.</p>
+
+        <a href="https://replicate.com/anotherjesse/zeroscope-v2-xl" className="no-underline bg-black focus:transparent focus:text-black active:transparent active:text-black text-lg text-white px-5 py-3 mt-4 rounded shadow" type="submit">
+          Make videos with Replicate<ArrowRightIcon className="inline-block w-5 h-5 ml-2" />
+        </a>
       </div>
 
       <h2 className={ `${spaceGrotesk.className} font-bold text-4xl mt-20 mb-8`}>Compare videos</h2>

@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         <meta property="og:url" content="https://zeroscope.replicate.dev" />
         <meta property="og:type" content="website" />
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://waveformer.replicate.dev" />
+        <meta property="twitter:url" content="https://zeroscope.replicate.dev" />
         <meta property="twitter:title" content={metadata.title} />
         <meta property="twitter:description" content={metadata.description} />
         <meta property="twitter:image" content="https://zeroscope.replicate.dev/og.jpg" />
